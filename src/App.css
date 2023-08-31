@@ -1,3 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Merriweather:ital@0;1&family=Varela+Round&family=Work+Sans:wght@400;500;800&display=swap");
+
+
+/* @darkgrey = #6A6969; */
+:root {
+  --darkgrey: #6a6969;
+  --palegreen: rgb(198, 204, 186, 0.5);
+  --lightgreen: #aeb79d;
+  --darkgreen: #627354;
+  --darkgreenOpacity: rgb(174, 183, 157, 0.7);
+}
+
+main {
+  text-align: center;
+  vertical-align: center;
+  height: 100vh;
+  /* width: 100%; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("./img/Background.png");
+  overflow-y: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +35,57 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.navbar{
+  height:fit-content;
+  display: flex!important;
+  flex-direction: row;
+  justify-content: center!important;
+  background-color: rgb(219, 220, 211, 1);
+  border-radius: 0px 0px 13px 13px;
+  align-items: center;
+}
+
+
+.navBarTitle {
+  font-family: "Lexend Peta", sans-serif;
+  color: var(--darkgreen);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.navContainer{
+  width:60%;
+  display: flex!important;
+  justify-content: space-between
+}
+
+.buttonHIE{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonHIE h1{
+  font-size: 1vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--darkgrey)
+}
+
+.buttonHIE h1:hover{
+  transition: 0.2s;
+  text-decoration: 2.5px underline var(--darkgreen);
+  text-underline-offset: 6px;
+  z-index: 200;
+}
+
+.active {
+  text-decoration: 2.5px underline var(--darkgreen);
+  text-underline-offset: 6px;
+  z-index: 200;
 }
 
 .App-header {
@@ -34,5 +109,403 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+.leftBtn {
+  width: 45px;
+}
+
+.leftBtn:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+}
+
+.rightBtn {
+  width: 45px;
+}
+
+.rightBtn:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+}
+
+.monthPwithArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.monthP {
+  margin-bottom: 0;
+  padding: 0 10px;
+  color: var(--darkgreen);
+  font-weight: 600;
+  font-size: 25px;
+  font-family: "Lexend Peta", sans-serif;
+}
+
+.Summary {
+  border: 1px solid var(--darkgreen);
+  padding: 8px;
+  border-radius: 12px;
+  width: 45%;
+  margin: 0 auto;
+  box-shadow: 5px 5px 10px var(--lightgreen);
+  font-family: "Varela Round";
+  font-size: 16px;
+}
+
+.SummaryRow {
+  padding: 0 15px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SummaryRow p {
+  margin-bottom: 0;
+  line-height: 2rem;
+}
+
+.incomeP {
+  color: green;
+}
+
+.expensesP {
+  color: #881616;
+}
+
+.summaryOfExpenses {
+  border-bottom: 1px solid var(--darkgrey);
+}
+
+.HomeBottomContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.homedetailsdiv {
+  width: 45%;
+  height: fit-content;
+  background-color: rgb(209, 209, 209, 0.6);
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+.homePageEntryRow{
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 18px;
+  color: rgb(92, 92, 92);
+}
+
+.showBreakDown{
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  color: #e6a3c0;
+  font-weight: 400;
+}
+
+.pageHeading {
+  color: #93a286;
+  font-family: "Varela Round";
+  font-size: 30px;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.addItemCircle {
+  right: 28px;
+  bottom: 28px;
+  position: absolute;
+  z-index: 900;
+}
+
+.addBox {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: 60px;
+  height: 60px;
+  bottom: 100px;
+  right: 50px;
+}
+
+.addItemCircle2 {
+  width: 50px;
+  height: 50px;
+  bottom: 100px;
+  right: 50px;
+  background-color: #aeb79d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horiLine {
+  position: absolute;
+  right: 13px;
+  bottom: 25px;
+  width: 30px;
+  height: 6px;
+  border-radius: 30px;
+  background-color: #737370;
+  z-index: 500;
+}
+
+.vertLine {
+  position: absolute;
+  right: 25px;
+  bottom: 15px;
+  width: 6px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #737370;
+  z-index: 500;
+}
+
+
+table {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid var(--darkgreen);
+  padding: 8px;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  box-shadow: 5px 5px 10px var(--lightgreen);
+  font-family: "Varela Round";
+  font-size: 16px;
+  background-color: rgb(255, 255, 255, 0.9);
+  z-index: 800;
+}
+
+tr td:first-child {
+  text-align: left;
+  width: 40px;
+}
+
+tr td span {
+  padding: 2px 5px;
+}
+
+td {
+  padding: 10px;
+}
+
+tr td span img {
+  width: 25px;
+}
+tr td:nth-child(2) {
+  text-align: left;
+}
+
+.span2Style {
+  margin-top: 10px;
+}
+
+.AddCatBtnStyle {
+  background-color: var(--darkgreenOpacity);
+  width: 8.5rem;
+  color: var(--darkgreen);
+  border-radius: 20px;
+  border-color: var(--darkgreen);
+  font-weight: 500;
+  margin: 8px 10px;
+  border: none;
+}
+
+.typeOfInput {
+  width: 60%;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: var(--palegreen);
+  border: none;
+  text-align: center;
+}
+
+.AddCatDiv {
+  border: 2px dotted var(--darkgrey);
+  border-radius: 8px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.AddCatDivRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addCatScrollDown {
+  margin-left: 3px;
+  width: 48%;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: var(--palegreen);
+  border: none;
+  text-align: center;
+}
+
+.changeWidth {
+  width: 59%;
+}
+
+.addCatInput {
+  width: 48%;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: var(--palegreen);
+  border: none;
+  text-align: center;
+}
+
+.deleteCatScrollDown {
+  margin-left: 3px;
+  width: 48%;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: var(--palegreen);
+  border: none;
+  text-align: center;
+}
+
+.inputAmount {
+  width: 60%;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: var(--palegreen);
+  border: none;
+  text-align: center;
+}
+
+
+/*-----------------Income & Expenses Page----------------------*/
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  height: 500px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.rightContainer {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.incomeItemsOnRight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.overview{
+  padding-left: 10px;
+  font-weight: 500;
+  color: var(--darkgreen);
+  font-size: 20px;
+}
+
+.InExSummary{
+  display: flex; 
+  justify-content: space-between;
+  margin: 10px;
+  font-weight: 500;  
+}
+
+.InExSummary p{
+  margin-bottom: 0;
+}
+
+hr{
+  margin: 0.5rem 0.5rem;
+  border-bottom: 1px solid;
+}
+
+/* ----------------------./pages----------------------- */
+.pageHeading {
+  color: #93a286;
+  font-family: "Varela Round";
+  font-size: 30px;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.editordelete {
+  box-shadow: 5px 5px 10px var(--darkgreen);
+  background-color: rgb(209, 209, 209, 0.9);
+  z-index: 100;
+  position: fixed;
+  top: 45vh;
+  left: 40vw;
+  height: fit-content;
+  width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.detailsdiv {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(209, 209, 209, 0.6);
+  width: 80%;
+  margin: 2px;
+  font-weight: 600;
+}
+
+.detailsdiv p {
+  margin: 2px 12px;
+}
+
+.detailsdiv p:first-child {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.detailsdiv p:nth-child(2) {
+  color: var(--darkgreen);
+}
+
+
+.hoverEffect:hover {
+  transition: 0.2s;
+  text-decoration: 2.5px underline var(--darkgreen);
+  text-underline-offset: 6px;
+  z-index: 200;
+}
+
+@media screen and (max-width:1000px) {
+  .buttonHIE h1{
+    font-size: 16px;
+
+  }
+  
+  .detailsdiv p{
+    font-size:10px;
+  }
+  .editordelete{
+    left:15%
   }
 }
