@@ -8,7 +8,7 @@ import RightArrow from './img/Right_Arrow_icon.png'
 import { ContextC} from './ContextC'
 
 export default function FilterByTime({ioo, filterCate, setArr }) {
-  const { moneyArr, setMoneyArr, cate, setCate, nextId ,setNextId } = useContext(ContextC)
+  const { moneyArr, setMoneyArr, cate} = useContext(ContextC)
   const month = [
     "Jan",
     "FEB",
@@ -38,22 +38,22 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
   let moneyArr2 = [];
   
   
-  filterCate == ""
+  filterCate === ""
     ? (moneyArr2 = moneyArr)
-    : (moneyArr2 = moneyArr.filter((el) => el.category == filterCate));
+    : (moneyArr2 = moneyArr.filter((el) => el.category === filterCate));
 
   let moneyArr3 =
-    moneyArr != []
+    moneyArr !== []
       ? moneyArr2
-        .filter((el) => el.inoroutC == ioo)
-        .filter((el) => new Date(el.time).getMonth() == index)
+        .filter((el) => el.inoroutC === ioo)
+        .filter((el) => new Date(el.time).getMonth() === index)
       : [];
 
   function handleLeft() {
     console.log(years)
     if (index > 0) {
       setIndex((n) => n - 1);
-    } else if (index == 0) {
+    } else if (index === 0) {
       setIndex(11);
       setYears(n=> n - 1);
     }
@@ -62,25 +62,22 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
     console.log(years)
     if (index < 11) {
       setIndex((n) => n + 1);
-    } else if (index == 11) {
+    } else if (index === 11) {
       setIndex(0);
       setYears(n=> n + 1);
       
     }
   }
-  function handleGetId(e) {
-    setId(e.target.dataset.id);
-    setShowED("block");
-    console.log(e.target.dataset.id);
-  }
+//   function handleGetId(e) {
+//     setId(e.target.dataset.id);
+//     setShowED("block");
+//     console.log(e.target.dataset.id);
+//   }
 
   function handleDelete() {
-    setMoneyArr(moneyArr.filter((el) => el.id != id));
+    setMoneyArr(moneyArr.filter((el) => el.id !== id));
     setShowED("none");
     console.log(moneyArr);
-    // console.log(id);
-    // console.log(arrIndex);
-    // console.log(chooseData);
   }
 
   function handleOK() {
@@ -150,9 +147,9 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
           {calTotal() !== 0 ? (
             <PieC
               Arr={moneyArr2
-                .filter((el) => el.inoroutC == ioo)
-                .filter((el) => new Date(el.time).getMonth() == index)}
-              cate={cate.filter((el) => el.ioo == ioo)}
+                .filter((el) => el.inoroutC === ioo)
+                .filter((el) => new Date(el.time).getMonth() === index)}
+              cate={cate.filter((el) => el.ioo === ioo)}
             />
           ) : null}
         </div>
@@ -175,7 +172,7 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
               </div>
               <hr />
               {cate
-                .filter((el) => el.ioo == ioo)
+                .filter((el) => el.ioo === ioo)
                 .map((el) => (
                   
                   <div className="InExSummary">
@@ -183,7 +180,7 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
                     <p>{el.cate} :</p> 
                     <p>${""}
                     {moneyArr3
-                      .filter((n) => n.category == el.cate)
+                      .filter((n) => n.category === el.cate)
                       .reduce((a, c) => a + c.money, 0)} 
                     </p>
                   </div>
@@ -191,8 +188,8 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
             </div>
             {moneyArr != []
               ? moneyArr2
-                .filter((el) => el.inoroutC == ioo)
-                .filter((el) => new Date(el.time).getMonth() == index)
+                .filter((el) => el.inoroutC === ioo)
+                .filter((el) => new Date(el.time).getMonth() === index)
                 .map((el) => (
                   <div
                     key={el.id}
@@ -213,7 +210,7 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
                       </div>
                       <span>
                         {" "}
-                        {el.inoroutC == "out" ? "-" : "+"}${el.money}
+                        {el.inoroutC === "out" ? "-" : "+"}${el.money}
                       </span>
                     </p>
                     <p>{el.category}</p>
@@ -247,7 +244,7 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
                 <br />
                 Category :{" "}
                 <select onChange={handleCCate}>
-                  {cate.filter(n=>n.ioo == inorout ).map((el) => (
+                  {cate.filter(n=>n.ioo === inorout ).map((el) => (
                     <option value={el.cate} key={el.cate}>
                       {el.cate}
                     </option>

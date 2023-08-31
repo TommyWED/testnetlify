@@ -52,7 +52,7 @@ export default function Home() {
     e.preventDefault()
 
     setNextId(n => n + 1)
-    if (inputMoney == "") {
+    if (inputMoney === "") {
       alert("Please enter amount")
     } else {
       setMoneyArr([
@@ -87,7 +87,7 @@ export default function Home() {
 
   function handleInorout(e) {
     setInorout(e.target.value)
-    setChooseCate(cate.filter((el) => el.ioo == e.target.value)[0].cate)
+    setChooseCate(cate.filter((el) => el.ioo === e.target.value)[0].cate)
     console.log(e.target.value)
   }
 
@@ -101,7 +101,7 @@ export default function Home() {
   }
 
   function calBal() {
-    return moneyArr.filter((el) => el.inoroutC == "in").reduce((a, c) => a + c.money, 0) - moneyArr.filter((el) => el.inoroutC == "out").reduce((a, c) => a + c.money, 0)
+    return moneyArr.filter((el) => el.inoroutC === "in").reduce((a, c) => a + c.money, 0) - moneyArr.filter((el) => el.inoroutC === "out").reduce((a, c) => a + c.money, 0)
   }
 
   let disT = showT ? "block" : "none"
@@ -115,11 +115,11 @@ export default function Home() {
       <div className="Summary">
         <div className="SummaryRow">
           <p>Income :</p>
-          <p className="incomeP">HK$ {moneyArr.filter((el) => el.inoroutC == "in").reduce((a, c) => a + c.money, 0)}</p>
+          <p className="incomeP">HK$ {moneyArr.filter((el) => el.inoroutC === "in").reduce((a, c) => a + c.money, 0)}</p>
         </div>
         <div className="SummaryRow summaryOfExpenses">
           <p >Expenses : </p>
-          <p className="expensesP">HK$ {moneyArr.filter((el) => el.inoroutC == "out").reduce((a, c) => a + c.money, 0)}</p>
+          <p className="expensesP">HK$ {moneyArr.filter((el) => el.inoroutC === "out").reduce((a, c) => a + c.money, 0)}</p>
         </div>
         <div className="SummaryRow summaryOf">
           <p>Balance : </p>

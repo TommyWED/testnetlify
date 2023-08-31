@@ -36,13 +36,13 @@ export default function Category({ cate, setCate, handleChooseCate, inorout , se
   }
 
   function handleDeleteCate() {
-    setCate(cate => cate.filter((el) => el.cate != deCateName))
+    setCate(cate => cate.filter((el) => el.cate !== deCateName))
   }
-  useEffect(()=>setMoneyArr(n=> moneyArr.filter((el)=> cate.some((c) => c.cate == el.category))),[cate])
+  useEffect(()=>setMoneyArr(n=> moneyArr.filter((el)=> cate.some((c) => c.cate === el.category))),[cate])
   return (
     <div>
       <select onChange={handleChooseCate} className="addCatScrollDown changeWidth">
-        {cate.filter((el) => el.ioo == inorout).map((el) => <option key={el.cate} value={el.cate}>{el.cate}</option>)}
+        {cate.filter((el) => el.ioo === inorout).map((el) => <option key={el.cate} value={el.cate}>{el.cate}</option>)}
       </select>
       <br />
       <button type="button" onClick={handleDisplay} className="AddCatBtnStyle">Add Category</button>

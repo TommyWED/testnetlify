@@ -29,7 +29,7 @@ export default function Homedetails({ moneyArr, cate }) {
   function handleLeft() {
     if (index > 0) {
       setIndex((n) => n - 1);
-    } else if (index == 0) {
+    } else if (index === 0) {
       setIndex(11);
     }
   }
@@ -37,41 +37,36 @@ export default function Homedetails({ moneyArr, cate }) {
   function handleRight() {
     if (index < 11) {
       setIndex((n) => n + 1);
-    } else if (index == 11) {
+    } else if (index === 11) {
       setIndex(0);
     }
   }
 
   let moneyArr2 =
-    moneyArr.filter((el) => new Date(el.time).getMonth() == index) != []
-      ? moneyArr.filter((el) => new Date(el.time).getMonth() == index)
+    moneyArr.filter((el) => new Date(el.time).getMonth() === index) !== []
+      ? moneyArr.filter((el) => new Date(el.time).getMonth() === index)
       : [];
 
       useEffect(() => {
-        const filteredData = moneyArr.filter((el) => new Date(el.time).getMonth() === index);
-        const moneyArr2 = filteredData.length !== 0 ? filteredData : [];        
+        const filteredData = moneyArr.filter((el) => new Date(el.time).getMonth() === index);        
       }, [moneyArr, index]);
   //console.log(dayArr.filter((el)=> moneyArr.some(n=> new Date(n.time).getDate() == el)))
   return (
     <div>
       <div className="monthPwithArrow">
-        <a type="button" onClick={handleLeft}>
-          <img src={LeftArrow} className="leftBtn" />
-        </a>
+          <img src={LeftArrow} className="leftBtn" onClick={handleLeft}/>
         <p className="monthP"> {month[index]} 2023</p>
-        <a type="button" onClick={handleRight}>
-          <img src={RightArrow} className="rightBtn" />
-        </a>
+          <img src={RightArrow} className="rightBtn" onClick={handleRight} />
       </div>
 
       <div className="HomeBottomContainer" style={{ paddingTop: "20px" }}>
         <div className={moneyArr.length !== 0 ? "homedetailsdiv" : null}>
           {/* don't change to other month ,need to fix bug */}
           
-          {moneyArr2 != []
+          {moneyArr2 !== []
             && dayArr
               .filter((el) =>
-                moneyArr2.some((n) => new Date(n.time).getDate() == el)
+                moneyArr2.some((n) => new Date(n.time).getDate() === el)
               )
               .map((date) => (
                 <div onClick={(e) => setSelectEl((n) => date)} >
@@ -81,39 +76,39 @@ export default function Homedetails({ moneyArr, cate }) {
                       day[
                       new Date(
                         moneyArr2.filter(
-                          (el) => new Date(el.time).getDate() == date
+                          (el) => new Date(el.time).getDate() === date
                         )[0].time
                       ).getDay()
                       ]
                     }
                      ,{" "} {date}/{index + 1} : </div>
                     <div className="homePageEntryRecordRight">${moneyArr2
-                      .filter((fd) => new Date(fd.time).getDate() == date)
-                      .filter((el) => el.inoroutC == "in")
+                      .filter((fd) => new Date(fd.time).getDate() === date)
+                      .filter((el) => el.inoroutC === "in")
                       .reduce((a, c) => a + +c.money, 0) -
                       moneyArr2
-                        .filter((fd) => new Date(fd.time).getDate() == date)
-                        .filter((el) => el.inoroutC == "out")
+                        .filter((fd) => new Date(fd.time).getDate() === date)
+                        .filter((el) => el.inoroutC === "out")
                         .reduce((a, c) => a + +c.money, 0)}</div>
                   </div>
-                  {selectEl == date && (
+                  {selectEl === date && (
                     <div className="breakDownList">
                       {cate
                         .filter((cf) =>
                           moneyArr2
                             .filter(
-                              (el) => new Date(el.time).getDate() == date
+                              (el) => new Date(el.time).getDate() === date
                             )
-                            .some((el) => el.category == cf.cate)
+                            .some((el) => el.category === cf.cate)
                         )
                         .map((el) => (
                           <p className="showBreakDown">
-                            {el.cate} : {el.ioo == "in" ? "+$" : "-$"}
+                            {el.cate} : {el.ioo === "in" ? "+$" : "-$"}
                             {moneyArr2
                               .filter(
-                                (el) => new Date(el.time).getDate() == date
+                                (el) => new Date(el.time).getDate() === date
                               )
-                              .filter((el2) => el2.category == el.cate)
+                              .filter((el2) => el2.category === el.cate)
                               .reduce((a, c) => a + c.money, 0)}
                           </p>
                         ))}

@@ -1,14 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { useState, useEffect } from 'react';
-import Navigation from './Navigation.jsx';
-import Home from './Home';
-import Income from './Income'
-import Expenses from './Expenses'
-import MainLayout from './layout/MainLayout.jsx'
 import Category from './Category'
-import CategorySelect from './CategorySelect'
-import FilterByCate from './FilterByCate'
 import Homedetails from './Homedetails';
 //moneyArr, cate, nextID update and save to localstorage
 
@@ -29,7 +22,6 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
   const [incomeArr, setIncomeArr] = useState([])
   const [outcomeArr, setOutcomeArr] = useState([])
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString())
-  const [day, setDay] = useState()
   const [chooseCate, setChooseCate] = useState("Salary")
   const [nextId, setNextId] = useState(nextIdLS || 0)
   const [showT, setShowT] = useState(false)
@@ -46,7 +38,7 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
 
   useEffect(() => {
     const amount = inputMoney !== '' ? +inputMoney : 0;
-    setMoney(moneyArr.filter((el) => el.inoroutC == "in").reduce((a, c) => a + +c.money, 0) - +moneyArr.filter((el) => el.inoroutC == "out").reduce((a, c) => a + +c.money, 0))
+    setMoney(moneyArr.filter((el) => el.inoroutC === "in").reduce((a, c) => a + +c.money, 0) - +moneyArr.filter((el) => el.inoroutC === "out").reduce((a, c) => a + +c.money, 0))
     localStorage.setItem('MoneyArr', JSON.stringify(moneyArr))
     localStorage.setItem("NextId", JSON.stringify(nextId))
   }, [moneyArr])
@@ -66,7 +58,7 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
     e.preventDefault()
 
     setNextId(n => n + 1)
-    if (inputMoney == "") {
+    if (inputMoney === "") {
       alert("Please enter amount")
     } else {
       setMoneyArr([
@@ -101,7 +93,7 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
 
   function handleInorout(e) {
     setInorout(e.target.value)
-    setChooseCate(cate.filter((el) => el.ioo == e.target.value)[0].cate)
+    setChooseCate(cate.filter((el) => el.ioo === e.target.value)[0].cate)
     console.log(e.target.value)
   }
 
@@ -120,7 +112,7 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
   }
 
   function calBal() {
-    return moneyArr.filter((el) => el.inoroutC == "in").reduce((a, c) => a + c.money, 0) - moneyArr.filter((el) => el.inoroutC == "out").reduce((a, c) => a + c.money, 0)
+    return moneyArr.filter((el) => el.inoroutC === "in").reduce((a, c) => a + c.money, 0) - moneyArr.filter((el) => el.inoroutC === "out").reduce((a, c) => a + c.money, 0)
   }
 
   let disT = showT ? "block" : "none"
@@ -130,11 +122,11 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
       <div className="Summary">
         <div className="SummaryRow">
           <p>Income :</p>
-          <p className="incomeP">HK$ {moneyArr.filter((el) => el.inoroutC == "in").reduce((a, c) => a + c.money, 0)}</p>
+          <p className="incomeP">HK$ {moneyArr.filter((el) => el.inoroutC === "in").reduce((a, c) => a + c.money, 0)}</p>
         </div>
         <div className="SummaryRow summaryOfExpenses">
           <p >Expenses : </p>
-          <p className="expensesP">HK$ {moneyArr.filter((el) => el.inoroutC == "out").reduce((a, c) => a + c.money, 0)}</p>
+          <p className="expensesP">HK$ {moneyArr.filter((el) => el.inoroutC === "out").reduce((a, c) => a + c.money, 0)}</p>
         </div>
         <div className="SummaryRow summaryOf">
           <p>Balance : </p>
@@ -178,7 +170,7 @@ export default function Content({ LSMoneyArr, LSCateArr }) {
         </tbody>
       </table>
 
-      <a onClick={displayTable} href="#"><img src={disT == "none" ? "./src/img/Add_icon.png" : "/src/img/Collapse.png"} className="addItemCircle" /></a>
+      <a onClick={displayTable} href="#"><img src={disT === "none" ? "./src/img/Add_icon.png" : "/src/img/Collapse.png"} className="addItemCircle" /></a>
       {/* <a href="#" className="addBox" style={{ display: "none" }}>
         <div className="addItemCircle2" >
           <div style={{ postion: "relative" }}>
