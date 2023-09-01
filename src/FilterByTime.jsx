@@ -47,10 +47,10 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
       ? moneyArr2
         .filter((el) => el.inoroutC === ioo)
         .filter((el) => new Date(el.time).getMonth() === index)
+        .filter((el) => new Date(el.time).getFullYear() === years)
       : [];
 
   function handleLeft() {
-    console.log(years)
     if (index > 0) {
       setIndex((n) => n - 1);
     } else if (index === 0) {
@@ -59,7 +59,6 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
     }
   }
   function handleRight() {
-    console.log(years)
     if (index < 11) {
       setIndex((n) => n + 1);
     } else if (index === 11) {
@@ -148,7 +147,8 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
             <PieC
               Arr={moneyArr2
                 .filter((el) => el.inoroutC === ioo)
-                .filter((el) => new Date(el.time).getMonth() === index)}
+                .filter((el) => new Date(el.time).getMonth() === index)
+                .filter((el) => new Date(el.time).getFullYear() === years)}
               cate={cate.filter((el) => el.ioo === ioo)}
             />
           ) : null}
@@ -190,6 +190,7 @@ export default function FilterByTime({ioo, filterCate, setArr }) {
               ? moneyArr2
                 .filter((el) => el.inoroutC === ioo)
                 .filter((el) => new Date(el.time).getMonth() === index)
+                .filter((el) => new Date(el.time).getFullYear() === years)
                 .map((el) => (
                   <div
                     key={el.id}

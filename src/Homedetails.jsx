@@ -18,6 +18,7 @@ export default function Homedetails({ moneyArr, cate }) {
     "NOV",
     "DEC",
   ];
+  const [years, setYears] = useState(2023);
   const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [index, setIndex] = useState(new Date().getMonth());
   const [selectEl, setSelectEl] = useState();
@@ -31,20 +32,22 @@ export default function Homedetails({ moneyArr, cate }) {
       setIndex((n) => n - 1);
     } else if (index === 0) {
       setIndex(11);
+      setYears(n=> n - 1);
     }
   }
-
   function handleRight() {
     if (index < 11) {
       setIndex((n) => n + 1);
     } else if (index === 11) {
       setIndex(0);
+      setYears(n=> n + 1);
+      
     }
   }
 
   let moneyArr2 =
     moneyArr.filter((el) => new Date(el.time).getMonth() === index) !== []
-      ? moneyArr.filter((el) => new Date(el.time).getMonth() === index)
+      ? moneyArr.filter((el) => new Date(el.time).getMonth() === index).filter((el) => new Date(el.time).getFullYear() === years)
       : [];
 
       useEffect(() => {
@@ -55,7 +58,7 @@ export default function Homedetails({ moneyArr, cate }) {
     <div>
       <div className="monthPwithArrow">
           <img src={LeftArrow} className="leftBtn" onClick={handleLeft}/>
-        <p className="monthP"> {month[index]} 2023</p>
+        <p className="monthP"> {month[index]} {years}</p>
           <img src={RightArrow} className="rightBtn" onClick={handleRight} />
       </div>
 
