@@ -125,3 +125,5 @@ export default function Homedetails({ moneyArr, cate }) {
     </div>
   );
 }
+
+
